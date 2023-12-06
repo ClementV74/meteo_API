@@ -144,7 +144,7 @@
     <Folder Include="Ressources\Icons\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Ressources\cities.txt" />
+    <Resource Include="cities.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

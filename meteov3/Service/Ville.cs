@@ -1,37 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace meteov3.Service
 {
     public class Ville
     {
-        public List<String> LsVille;
+        public List<string> LsVille;
 
         public Ville()
         {
-
-            LsVille = new List<String>();
-   
-            LsVille.Add("Paris");   
-            LsVille.Add("Marseille");
-            LsVille.Add("Lyon");
-            LsVille.Add("Toulouse");
-            LsVille.Add("Nice");
-            LsVille.Add("Nantes");
-            LsVille.Add("Strasbourg");
-            LsVille.Add("Montpellier");
-          
+            LsVille = new List<string>();
+            LoadCitiesFromFile("cities.txt");
         }
 
-        //ajoute le code por ajouter une ville avec un btn pour ajouter une ville dnas la liste
-          public void AddVille(string villeName)
+        public void AddVille(string villeName)
         {
             if (!LsVille.Contains(villeName))
             {
                 LsVille.Add(villeName);
+                SaveCitiesToFile("cities.txt");
             }
         }
 
@@ -40,8 +28,35 @@ namespace meteov3.Service
             if (LsVille.Contains(villeName))
             {
                 LsVille.Remove(villeName);
+                SaveCitiesToFile("cities.txt");
             }
         }
-       
+
+        private void LoadCitiesFromFile(string fileName)
+        {
+            try
+            {
+                if (File.Exists(fileName))
+                {
+                    LsVille = new List<string>(File.ReadAllLines(fileName));
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error loading cities from file: {ex.Message}");
+            }
+        }
+
+        private void SaveCitiesToFile(string fileName)
+        {
+            try
+            {
+                File.WriteAllLines(fileName, LsVille);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error saving cities to file: {ex.Message}");
+            }
+        }
     }
 }

@@ -87,7 +87,7 @@ namespace meteov3
                     MessageBox.Show("Erreur lors de la récupération des données météo."); // On affiche un message d'erreur
                 }
             }
-            catch (Exception)
+            catch 
             {
                 MessageBox.Show("Erreur : veuillez entrer une ville valide ");
 
