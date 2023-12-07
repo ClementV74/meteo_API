@@ -19,7 +19,7 @@ namespace meteov3
     {
 
         WeatherForecastDisplay prevision;
-        // On crée un objet Api
+       
         Apimeteo api;
         // On crée un objet WeatherForecastDisplay
         public readonly WeatherForecastDisplay _forecastDisplay;
